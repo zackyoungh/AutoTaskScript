@@ -158,7 +158,7 @@ async function sign() {
  */
 async function getUserPoints() {
     try {
-        const data = await sudojia.sendRequest(`${baseUrl}//api/v1/member/115824951/points/changed/list?startIndex=0&pageCount=20&shopId=24&memberId=${$.userId}`, 'get', getSignHeader());
+        const data = await sudojia.sendRequest(`${baseUrl}//api/v1/member/points/query?needQueryPoints=1&needQueryBalance=0&needFrozenState=1`, 'get', getSignHeader());
         if (0 !== data.header.code) {
             return console.error('获取积分失败 ->', data.header.message);
         }

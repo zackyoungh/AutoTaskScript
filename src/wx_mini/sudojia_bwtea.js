@@ -165,7 +165,7 @@ async function oldSign(activityId) {
  */
 async function queryNewSign() {
     try {
-        const data = await sudojia.sendRequest(`${baseUrl}/web/cmk-center/sign/userSignStatistics`, 'post', headers, {
+        const data = await sudojia.sendRequestOrigin(`${baseUrl}/web/cmk-center/sign/userSignStatistics`, 'post', headers, {
             activityId: newActivityId,
             appid: appId,
         });
