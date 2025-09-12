@@ -74,7 +74,7 @@ async function main() {
  */
 async function checkLogin() {
     try {
-        const data = await sudojia.sendRequest(`${baseUrl}/web/catering2-apiserver/crm/customer-center?appid=${appId}`, 'get', headers);
+        const data = await sudojia.sendRequestOrigin(`${baseUrl}/web/catering2-apiserver/crm/customer-center?appid=${appId}`, 'get', headers);
         return data.status;
     } catch (e) {
         console.error(`检测 Token 时发生异常：${e}`);

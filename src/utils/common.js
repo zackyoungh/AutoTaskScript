@@ -19,6 +19,12 @@ async function sendRequest(url, method, headers = {}, data = {}) {
     const response = await axios(options);
     return response.data;
 }
+async function sendRequestOrigin(url, method, headers = {}, data = {}) {
+    const options = {
+        method: method.toUpperCase(), url, data, headers: headers,
+    };
+    return await axios(options);
+}
 
 // ****************************************Wait time****************************************
 
@@ -204,4 +210,4 @@ function getRandomUserAgent(type = 'wx_mini') {
     return arrays[index];
 }
 
-module.exports = {sendRequest, getRandomWait, md5, getRandomUserAgent};
+module.exports = {sendRequest, sendRequestOrigin, getRandomWait, md5, getRandomUserAgent};
