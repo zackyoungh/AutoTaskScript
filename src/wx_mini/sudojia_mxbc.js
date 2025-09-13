@@ -24,13 +24,13 @@ const appId = 'd82be6bbc1da11eb9dd000163e122ecb';
 // 请求头
 const headers = {
     'Host': 'mxsa.mxbc.net',
-    'app': 'mxbc',
-    'appchannel': 'xiaomi',
+    // 'app': 'mxbc',
+    // 'appchannel': 'xiaomi',
     'User-Agent': sudojia.getRandomUserAgent(),
-    'Content-Type': 'application/json',
-    'Accept': '*/*',
-    'Referer': `https://servicewechat.com/wx7696c66d2245d107/123/page-frame.html`,
-    'Accept-Encoding': 'gzip, deflate, br',
+    // 'Content-Type': 'application/json',
+    // 'Accept': '*/*',
+    // 'Referer': `https://servicewechat.com/wx7696c66d2245d107/123/page-frame.html`,
+    // 'Accept-Encoding': 'gzip, deflate, br',
 };
 
 !(async () => {
