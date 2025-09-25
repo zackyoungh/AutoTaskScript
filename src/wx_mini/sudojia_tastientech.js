@@ -66,34 +66,17 @@ async function getActivityId() {
         if (200 !== data.code) {
             return console.error(`获取活动ID失败 ->`, data.msg);
         }
-        const dailySignInBanner = data.result.find(item => item.bannerName === '每日签到');
+        const dailySignInBanner = data.result.find(item => item.bannerName.includes('签到'));
         if (!dailySignInBanner) {
             return console.error('未找到每日签到活动');
         }
         // 解析 jumpPara 字段
         const jumpPara = JSON.parse(dailySignInBanner.jumpPara);
-        if (!jumpPara || !jumpPara.path) {
+        if (!jumpPara || !jumpPara.activityId) {
             return console.error('jumpPara 结构不符合预期:', jumpPara);
         }
-        const decodedPath = decodeURIComponent(jumpPara.path);
-        const urlParams = new URLSearchParams(new URL(decodedPath, 'https://example.com').search);
-        const jumpCode = urlParams.get('jumpCode');
-        const encodedJumpPara = urlParams.get('jumpPara');
-        if (!jumpCode || !encodedJumpPara) {
-            return console.error('查询参数不符合预期:', decodedPath);
-        }
-        // 解码 jumpPara
-        const decodedJumpPara = decodeURIComponent(encodedJumpPara);
-        // 解析 jumpPara JSON
-        const jumpParaObj = JSON.parse(decodedJumpPara);
-        if (!jumpParaObj || !jumpParaObj.activityId) {
-            return console.error('jumpPara JSON 结构不符合预期:', decodedJumpPara);
-        }
-        signActivityId = jumpParaObj.activityId;
-        const today = new Date();
-        const month = today.getMonth() + 1;
-        const day = today.getDate();
-        console.log(`${month}月${day}日-签到活动ID: ${signActivityId}`);
+        signActivityId = jumpPara.activityId;
+        console.log(`签到活动ID: ${signActivityId}`);
     } catch (e) {
         console.error(`获取活动ID时发生异常：${e}`);
     }
